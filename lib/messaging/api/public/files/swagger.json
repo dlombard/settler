@@ -1,0 +1,64 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Settler worker API",
+    "version" : "1.0.0",
+    "title" : "Settler worker api endpoint",
+    "license" : {
+      "name" : "MIT"
+    }
+  },
+  "paths" : {
+    "/request" : {
+      "post" : {
+        "summary" : "Sends request to worker",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "inventoryItem",
+          "schema" : {
+            "$ref" : "#/definitions/request"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "item created"
+          },
+          "400" : {
+            "description" : "invalid input, object invalid"
+          },
+          "409" : {
+            "description" : "an existing item already exists"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "request" : {
+      "type" : "object",
+      "required" : [ "messageId", "userId" ],
+      "properties" : {
+        "messageId" : {
+          "type" : "string"
+        },
+        "userId" : {
+          "type" : "string"
+        },
+        "action" : {
+          "type" : "string"
+        },
+        "data" : {
+          "type" : "object"
+        },
+        "app" : {
+          "type" : "object"
+        }
+      }
+    }
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/dlombard/Settler/1.0.0",
+  "schemes" : [ "https" ]
+}
