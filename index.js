@@ -1,3 +1,3 @@
 require('dotenv').config()
 global.appRootDir = __dirname
-require('./lib')
+require('./lib/oneclick-worker')
