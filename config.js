@@ -1,8 +1,7 @@
 let config = {
-  mongoose: {
-    options: {
-      useMongoClient: true,
-    },
+  api: {
+    base_url: 'http://127.0.0.1',
+    port: 26001
   },
   mongo: {
     poolSize: 10,
@@ -14,10 +13,16 @@ let config = {
     autoReconnect: true,
     keepAlive: 120,
   },
-  ansible:{
-    'playbooks':{
+  ansible: {
+    'playbooks': {
       uploadPath: './scripts'
     }
+  },
+  rabbitMQ: {
+    queue: 'tasks',
+    exchange: 'tasks',
+    exchange_type: 'topic',
+    routing_key: 'task.default'
   }
 }
 
