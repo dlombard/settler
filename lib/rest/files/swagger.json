@@ -1,0 +1,158 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Settler worker API",
+    "version" : "1.0.0",
+    "title" : "Settler worker api endpoint",
+    "license" : {
+      "name" : "MIT"
+    }
+  },
+  "basePath" : "/v1",
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/user" : {
+      "get" : {
+        "summary" : "Get user's document",
+        "responses" : {
+          "200" : {
+            "description" : "User found"
+          },
+          "400" : {
+            "description" : "invalid input, object invalid"
+          },
+          "409" : {
+            "description" : "an existing item already exists"
+          }
+        }
+      }
+    },
+    "/user/{id}" : {
+      "get" : {
+        "summary" : "Get user's document",
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "User found"
+          },
+          "400" : {
+            "description" : "invalid input, object invalid"
+          },
+          "409" : {
+            "description" : "an existing item already exists"
+          }
+        }
+      }
+    },
+    "/user/{id}/settlements" : {
+      "get" : {
+        "summary" : "Get user's settlements",
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Settlements found"
+          },
+          "400" : {
+            "description" : "invalid input, object invalid"
+          },
+          "409" : {
+            "description" : "an existing item already exists"
+          }
+        }
+      }
+    },
+    "/user/{id}/settlements/{messageID}" : {
+      "patch" : {
+        "summary" : "Update a Settlement",
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id",
+          "type" : "string",
+          "required" : true
+        }, {
+          "in" : "path",
+          "name" : "messageID",
+          "type" : "string",
+          "required" : true
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "schema" : {
+            "type" : "object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Settlements updated"
+          },
+          "400" : {
+            "description" : "Update Failed"
+          }
+        }
+      }
+    },
+    "/settlements" : {
+      "post" : {
+        "summary" : "Create a new Settlement",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "schema" : {
+            "type" : "object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Settlements created"
+          },
+          "400" : {
+            "description" : "invalid input, object invalid"
+          },
+          "409" : {
+            "description" : "an existing item already exists"
+          }
+        }
+      },
+      "patch" : {
+        "summary" : "Update a Settlement",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "userId",
+          "type" : "string",
+          "required" : true
+        }, {
+          "in" : "query",
+          "name" : "messageId",
+          "type" : "string",
+          "required" : true
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "schema" : {
+            "type" : "object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Settlements updated"
+          },
+          "400" : {
+            "description" : "Update Failed"
+          }
+        }
+      }
+    }
+  },
+  "schemes" : [ "https", "http" ]
+}
