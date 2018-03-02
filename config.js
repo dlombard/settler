@@ -22,7 +22,11 @@ let config = {
     queue: 'tasks',
     exchange: 'tasks',
     exchange_type: 'topic',
-    routing_key: 'task.default'
+    routing_key: 'task.default',
+    sendingQueue: 'task_update'
+  },
+  terraform:{
+    api_endpoint: 'terraform'
   }
 }
 
